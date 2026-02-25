@@ -11,7 +11,7 @@
  * - Displays formatted result on console
  *
  *
- * @author Aditya Gupta
+ * @author Aditya
  * @version 9.0
  */
 
