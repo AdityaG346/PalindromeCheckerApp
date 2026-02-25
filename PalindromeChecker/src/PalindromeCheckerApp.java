@@ -1,29 +1,39 @@
 /*
- *MAIN CLASS - PalindromeCheckerApp
- *UC3: Reverse String Based Palindrome Check
+ * MAIN CLASS - PalindromeCheckerApp
+ * UC4: Character Array Based Validation
  *
  * Description:
  * This class represents the palindrome checker app
  *
  * At this stage, the application:
- * - Iterates the string in reverse order
- * - Builds a reversed version
- * - Compares original and reversed strings and displays result on console
+ * - Converts string to char array
+ * - Uses start and end pointers
+ * - Compares characters efficiently and displays result on console
  *
  *
  * @author Aditya Gupta
- * @version 3.0
+ * @version 4.0
  */
 
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
         String input = new String("MADAM");
-        String reversed = "";
-        for (int i = input.length() - 1; i >= 0; i--) {
-            reversed = reversed + input.charAt(i);
+        char[] charArray = input.toCharArray();
+
+        int start=0;
+        int end = charArray.length - 1;
+        boolean isPalindrome = true;
+
+        while (start < end) {
+            if (charArray[start] != charArray[end]) {
+                isPalindrome = false;
+                break;
+            }
+            start++;
+            end--;
         }
 
-        if (input.equals(reversed)) {
+        if (isPalindrome) {
             System.out.println("String is a palindrome");
         } else {
             System.out.println("String is not a palindrome");
