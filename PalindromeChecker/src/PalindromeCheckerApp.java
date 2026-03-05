@@ -1,39 +1,53 @@
 /*
- * MAIN CLASS - PalindromeCheckerApp
- * UC9 : Recursive Palindrome Checker
+ * MAIN CLASS - UseCase10PalindromeCheckerApp
+ *
+ * =========================================================
+ * Use Case 10: Normalized Palindrome Validation
+ * =========================================================
  *
  * Description:
- * This class represents the palindrome checker app
+ * This class validates a palindrome after preprocessing
+ * the input string.
  *
- * At this stage, the application:
- * - Validates a palindrome using recursion
- * - comparing start and end characters
- * - Displays formatted result on console
+ * Normalization includes:
+ * - Removing spaces and symbols
+ * - Converting to lowercase
  *
+ * This ensures the palindrome check is logical rather
+ * than character-format dependent.
+ *
+ * Example:
+ * "A man a plan a canal Panama"
  *
  * @author Aditya
- * @version 9.0
+ * @version 10.0
  */
 
-
 public class PalindromeCheckerApp {
-    public static void main(String[] args) {
-        String input = "madam";
 
-        boolean result = check(input, 0, input.length() - 1);
+    /**
+     * Application entry point for UC10.
+     *
+     * @param args Command-Line arguments
+     */
+    public static void main(String[] args) {
+
+        String input = "A man a plan a canal Panama";
+
+        String normalized = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+
+        boolean isPalindrome = true;
+
+        for (int i = 0; i < normalized.length() / 2; i++) {
+
+            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
+                isPalindrome = false;
+                break;
+            }
+        }
 
         System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + result);
-    }
-
-    private static boolean check(String s, int start, int end){
-        if (start >= end) {
-            return true;
-        }
-
-        if (s.charAt(start) != s.charAt(end)) {
-            return false;
-        }
-        return check(s, start + 1, end - 1);
+        System.out.println("Normalized : " + normalized);
+        System.out.println("Is Palindrome? : " + isPalindrome);
     }
 }
